@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/08/2016, 08:13:38
+    Author     : Priscila Gouveia <priscilaggouveia@gmail.com>
+*/
+
+body{
+    background-color: rgb(242,242,242);
+}
+
+/* Begin Cadastro*/
+
+.titCadastro{
+    background-color: rgb(0,173,239);
+    color:white;
+    padding: 10px;
+    
+}
+
+.text{
+    padding-left:20px;
+}
+.formulario{
+    
+    background-color: white;
+    padding: 0px 0px 30px 0px;
+    margin-bottom: 80px;
+}
+
+.btn{
+    background-color: rgb(0,173,239);
+    color:white;
+   
+}
+.btnCadastro2{
+     margin-top: 10px;
+}
+.btn:hover{
+    background-color: rgb(0,191,255);
+    color:white;
+}
+
+.footer{
+    background-color: rgb(0,173,239) !important;
+    color:white;
+}
+/*End*/
+
+/* Begin CadastroProduto*/
+.formProduto{
+    padding-top: 20px;
+}
+/*end*/
+
+/* Begin Login*/
+.btnLogin,.btnCadastro{
+    padding:10px 145px 10px 145px;
+}
+
+.btnCadastro{
+    margin-top: 18px;
+}
+.login{
+    margin-right: 200px;
+    padding-bottom: 30px;
+}
+/*end*/
+
+/*Begin Index*/
+.navbarIndex, .opcao, .brand, .navbar-text{
+    color:white;
+    background-color:rgb(0,173,239);
+}
+
+a,a:hover{
+    text-decoration: none;
+}
+.nav:hover{
+    background-color: rgb(0,191,255)!important;
+    color:white; 
+}
+
+.conteudo{
+    margin-top: 60px;
+}
+
+.banner{
+    background-color: rgb(255,70,96);
+    color:white;
+}
+
+.menu{
+    background-color: white;
+    padding: 30px 0px 10px 0px;
+    
+}
+
+.opcaoMenu{
+    margin-bottom: 15px !important;
+    color:black !important;
+}
+.linksMenu{
+    color:black;
+}
+.linksMenu:hover{
+    color:rgb(0,191,255);
+}
+.listaMenu{
+    list-style: none;
+}
+
+.valorProduto{
+    color: rgb(0,191,255);
+    font-weight: bold;
+}
+/*end*/
+
+/*Begin detalhesProduto*/
+.detalhesproduto{
+    background-color: white;
+    margin: 70px 0px 20px 137px;
+    padding: 20px 0px 20px 10px;
+}
+
+.sugestao{
+    background-color: white;
+    margin: 10px 0px 70px 137px;
+}
+
+.addCarrinho{
+    margin-top: 20px;
+}
+/*end*/
+
+/*Begin fecharPedido*/
+.container{
+    margin-top: 70px;
+}
+.endereco{
+    background-color: white;
+    margin-right: 30px;
+    margin-left: 90px;
+    padding-left: 30px;
+}
+
+.pagamento{
+    background-color: white;
+    padding: 20px;
+}
+/*end.*/
+
+/*Begin carrinho*/
+.conteudoCarrinho{
+    background-color: white;
+    padding-bottom: 20px;
+}
