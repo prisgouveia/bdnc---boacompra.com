@@ -55,7 +55,7 @@ and open the template in the editor.
                     <div class="col-sm-6 col-md-3">
                         <a href="">
                             <div class="thumbnail">
-                                <img src="" alt="...">
+                                <img src="Imagem?idProduto=${p.id}" alt="...">
                                 <div class="caption">
                                     <p>${p.descricao}</p>
                                     <h3>R$ ${p.valor}</h3>

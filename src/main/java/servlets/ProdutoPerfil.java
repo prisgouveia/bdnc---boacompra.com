@@ -40,7 +40,7 @@ public class ProdutoPerfil extends HttpServlet {
             LojaService lojaService = new LojaService();
             Produto produto = lojaService.buscarProduto(Long.parseLong(request.getParameter("idProduto")));
             request.setAttribute("produto", produto);            
-//            request.setAttribute("produtosSugeridos", lojaService.buscarProdutosSugeridos(produto));
+            request.setAttribute("produtosSugeridos", lojaService.buscarProdutosSugeridos(produto));
 
             RequestDispatcher dispather = request.getRequestDispatcher("detalheProduto.jsp");
             dispather.forward(request, response);

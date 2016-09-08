@@ -9,7 +9,10 @@ import entidades.Compra;
 import entidades.Produto;
 import entidades.RelTipes;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
@@ -25,7 +28,7 @@ public class DaoGrafo {
     
      public void salvarRelacionamentos(Compra compra) {
 
-        String path =  "C:\\Users\\Pris\\Documents\\Neo4j\\default.graphdb";
+        String path =  "C:\\Users\\Pris\\Documents\\Neo4j";
         File file = new File(path);
         GraphDatabaseService graph = new GraphDatabaseFactory().newEmbeddedDatabase(file);
 
@@ -50,35 +53,35 @@ public class DaoGrafo {
         graph.shutdown();
     }
 
-//    public Map<Long, Integer> buscarRelacionamentos(Produto produto) {
-//
-//        String path =  "C:\\Users\\Pris\\Documents\\Neo4j\\default.graphdb";
-//        File file = new File(path);
-//        GraphDatabaseService graph = new GraphDatabaseFactory().newEmbeddedDatabase(file);
-//        Map<Long, Integer> produtos = null;
-//
-//        try (Transaction tx = graph.beginTx()) {
-//            Node noProduto = graph.findNode(DynamicLabel.label("Produto"), "idProduto", produto.getId());
-//            if (noProduto != null) {
-//                Iterator<Relationship> relacionamentosProdutoCliente = noProduto.getRelationships(RelTipes.COMPROU).iterator();
-//                produtos = new HashMap<>();
-//                while (relacionamentosProdutoCliente.hasNext()) {
-//                    Node nodeCliente = relacionamentosProdutoCliente.next().getStartNode();
-//                    Iterable<Relationship> relacionamentosClienteProdutos = nodeCliente.getRelationships();
-//                    for (Relationship r : relacionamentosClienteProdutos) {
-//                        Node nodeProduto = r.getEndNode();
-//                        long id = (Long) nodeProduto.getProperty("idProduto");
-//                        if (!produtos.containsKey(id)) {
-//                            produtos.put(id, 1);
-//                        } else {
-//                            produtos.put(id, produtos.get(id) + 1);
-//                        }
-//                    }
-//                }
-//            } 
-//            tx.success();
-//        }
-//        graph.shutdown();
-//        return produtos;
-//    }
+    public Map<Long, Integer> buscarRelacionamentos(Produto produto) {
+
+        String path =  "C:\\Users\\Pris\\Documents\\Neo4j";
+        File file = new File(path);
+        GraphDatabaseService graph = new GraphDatabaseFactory().newEmbeddedDatabase(file);
+        Map<Long, Integer> produtos = null;
+
+        try (Transaction tx = graph.beginTx()) {
+            Node noProduto = graph.findNode(DynamicLabel.label("Produto"), "idProduto", produto.getId());
+            if (noProduto != null) {
+                Iterator<Relationship> relacionamentosProdutoCliente = noProduto.getRelationships(RelTipes.COMPROU).iterator();
+                produtos = new HashMap<>();
+                while (relacionamentosProdutoCliente.hasNext()) {
+                    Node nodeCliente = relacionamentosProdutoCliente.next().getStartNode();
+                    Iterable<Relationship> relacionamentosClienteProdutos = nodeCliente.getRelationships();
+                    for (Relationship r : relacionamentosClienteProdutos) {
+                        Node nodeProduto = r.getEndNode();
+                        long id = (Long) nodeProduto.getProperty("idProduto");
+                        if (!produtos.containsKey(id)) {
+                            produtos.put(id, 1);
+                        } else {
+                            produtos.put(id, produtos.get(id) + 1);
+                        }
+                    }
+                }
+            } 
+            tx.success();
+        }
+        graph.shutdown();
+        return produtos;
+    }
 }

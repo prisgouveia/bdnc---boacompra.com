@@ -61,10 +61,10 @@ public class RealizaCompra extends HttpServlet {
                 lojaService.salvarCompra(compra);
 //                lojaService.limparCarrinho(carrinho);
                 request.getSession().removeAttribute("carrinho");
-                response.sendRedirect("");
             }
+                response.sendRedirect("index.jsp");
             
-            response.sendRedirect("");
+            
 
         } catch (Exception e) {
             e.printStackTrace();

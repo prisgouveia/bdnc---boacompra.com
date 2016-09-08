@@ -97,51 +97,51 @@ public class LojaService {
         daoMongo.salvarCompra(compra);
     }
 
-//    public List<Produto> buscarProdutosSugeridos(Produto produto) {
-//        List<Produto> produtos = new ArrayList<>();
-//        Map<Long, Integer> idProdutos = daoGrafo.buscarRelacionamentos(produto);
-//        if (idProdutos != null) {
-//            long id1 = 0, id2 = 0, id3 = 0, id4 = 0;
-//            int p = 0, s = 0, t = 0, q = 0;
-//            for (Long id : idProdutos.keySet()) {
-//                int qtd = idProdutos.get(id);
-//                if (qtd > p) {
-//                    p = qtd;
-//                    id1 = id;
-//                } else if (qtd <= p && qtd > s) {
-//                    s = qtd;
-//                    id2 = id;
-//                } else if (qtd <= s && qtd > t) {
-//                    t = qtd;
-//                    id3 = id;
-//                } else if (qtd <= t && qtd > q) {
-//                    q = qtd;
-//                    id4 = id;
-//                }
-//            }
-//            if (p != 0) {
-//                produtos.add(daoProduto.buscar(id1, Produto.class));
-//            }
-//            if (s != 0) {
-//                produtos.add(daoProduto.buscar(id2, Produto.class));
-//            }
-//            if (t != 0) {
-//                produtos.add(daoProduto.buscar(id3, Produto.class));
-//            }
-//            if (q != 0) {
-//                produtos.add(daoProduto.buscar(id4, Produto.class));
-//            }
-//        } else {
-//            List<Produto> produtosLoja = listarProdutos();
-//            try {
-//                for (int i = 0; i < 4; i++) {
-//                    produtos.add(produtosLoja.get(i));
-//                }
-//            } catch (IndexOutOfBoundsException e) {
-//                return produtos;
-//            }
-//
-//        }
-//        return produtos;
-//    }
+    public List<Produto> buscarProdutosSugeridos(Produto produto) {
+        List<Produto> produtos = new ArrayList<>();
+        Map<Long, Integer> idProdutos = daoGrafo.buscarRelacionamentos(produto);
+        if (idProdutos != null) {
+            long id1 = 0, id2 = 0, id3 = 0, id4 = 0;
+            int p = 0, s = 0, t = 0, q = 0;
+            for (Long id : idProdutos.keySet()) {
+                int qtd = idProdutos.get(id);
+                if (qtd > p) {
+                    p = qtd;
+                    id1 = id;
+                } else if (qtd <= p && qtd > s) {
+                    s = qtd;
+                    id2 = id;
+                } else if (qtd <= s && qtd > t) {
+                    t = qtd;
+                    id3 = id;
+                } else if (qtd <= t && qtd > q) {
+                    q = qtd;
+                    id4 = id;
+                }
+            }
+            if (p != 0) {
+                produtos.add(daoJpa.buscar(id1, Produto.class));
+            }
+            if (s != 0) {
+                produtos.add(daoJpa.buscar(id2, Produto.class));
+            }
+            if (t != 0) {
+                produtos.add(daoJpa.buscar(id3, Produto.class));
+            }
+            if (q != 0) {
+                produtos.add(daoJpa.buscar(id4, Produto.class));
+            }
+        } else {
+            List<Produto> produtosLoja = listarProdutos();
+            try {
+                for (int i = 0; i < 4; i++) {
+                    produtos.add(produtosLoja.get(i));
+                }
+            } catch (IndexOutOfBoundsException e) {
+                return produtos;
+            }
+
+        }
+        return produtos;
+    }
 }
